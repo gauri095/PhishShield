@@ -37,11 +37,10 @@ app:
   security-apis:
     virustotal:
       base-url: https://www.virustotal.com/api/v3
-      api-key: 2cdada5e11f011d9bfd7dffa4860f82ceb899fb3d484af39897e1761a27a3cd8
+      api-key: ""
     safe-browsing:
       base-url: https://safebrowsing.googleapis.com/v4
-      api-key: AIzaSyAWUSh1dVDCNo7zXwzJWT0ozyazqs7BJYc
-
+      api-key: ""
 logging:
   level:
     com.labmentix.phishshield: INFO
