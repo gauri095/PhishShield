@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: PhishShield
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/DBPhishShield
+    username: postgres
+    password: P@ssword
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: public
+
+  flyway:
+    enabled: true
+    locations: classpath:db/DBPhishShield
+    baseline-on-migrate: true
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-to-a-long-random-base64-secret-in-prod-please}
+    access-token-expiration-ms: 3600000        # 1 hour
+    refresh-token-expiration-ms: 604800000     # 7 days
+
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+
+  security-apis:
+    virustotal:
+      base-url: https://www.virustotal.com/api/v3
+      api-key: 2cdada5e11f011d9bfd7dffa4860f82ceb899fb3d484af39897e1761a27a3cd8
+    safe-browsing:
+      base-url: https://safebrowsing.googleapis.com/v4
+      api-key: AIzaSyAWUSh1dVDCNo7zXwzJWT0ozyazqs7BJYc
+
+logging:
+  level:
+    com.labmentix.phishshield: INFO
+    org.springframework.security: WARN
+
